@@ -29,20 +29,20 @@ def verify_admin(email, password):
     return False
 
 def admin_operations(conn):  # Add 'conn' as a parameter to accept the database connection
-    print("1. Add User\n2. Add Course\n3. Add Intent\n4. Add Document\n5. View Chat Logs\n6. Exit")
+    print("1. Get users with certain criteria\n2. Add Course\n3. Add Intent\n4. Find key word in chat log\n5. Get questions from a certain user\n6. Exit")
     choice = input("Enter your choice: ")
     if choice == '1':
-        # Add User operation
+        # Get all users with certain criteria
         pass
     elif choice == '2':
         add_course(conn) 
     elif choice == '3':
         add_intent(conn)  
     elif choice == '4':
-        # Add Document operation
+        # Find key word in chat log
         pass
     elif choice == '5':
-        # View Chat Logs operation
+        # Get questions from a certain user
         pass
     elif choice == '6':
         return
