@@ -4,10 +4,10 @@ from getpass import getpass
 
 # Database connection parameters
 db_params = {
-    'dbname': 'satbot_db_1',
-    'user': 'postgres',
-    'password': 'password',
-    'host': 'satbot-db-1.c12seua6ol3a.us-east-2.rds.amazonaws.com'
+    'dbname': 'postgres',
+    'user': 'postgres.jswvecjagqmromsmvpsc',
+    'password': 'hiromiandjay2024',
+    'host': 'aws-0-us-west-1.pooler.supabase.com'
 }
 
 def connect_db(params):
@@ -53,9 +53,10 @@ def add_course(conn):
     course_name = input("Enter course name: ")
     year = input("Enter year: ")
     semester = input("Enter semester: ")
+    course_code = input("Enter course code: ")
     with conn.cursor() as cur:
-        cur.execute("INSERT INTO courses (course_name, year, semester) VALUES (%s, %s, %s)",
-                    (course_name, year, semester))
+        cur.execute("INSERT INTO courses (course_name, year, semester, course_code) VALUES (%s, %s, %s, %s)",
+                    (course_name, year, semester, course_code))
         conn.commit()
         print("Course added successfully.")
 
