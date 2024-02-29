@@ -35,9 +35,9 @@ def admin_operations(conn):  # Add 'conn' as a parameter to accept the database 
         # Add User operation
         pass
     elif choice == '2':
-        add_course(conn)  # Assuming you have or will create this function
+        add_course(conn) 
     elif choice == '3':
-        add_intent(conn)  # Assuming you have or will create this function
+        add_intent(conn)  
     elif choice == '4':
         # Add Document operation
         pass
@@ -64,7 +64,7 @@ def add_intent(conn):
     question = input("Enter question: ")
     answer = input("Enter answer: ")
     # Assuming the intent is not directly related to a specific course for simplicity
-    # If it is, you'd need to fetch the course_id based on user input
+    # If it is, need to fetch the course_id based on user input
     course_id = input("Enter course ID (leave blank if not applicable): ")
     course_id = None if course_id == "" else int(course_id)
     with conn.cursor() as cur:
