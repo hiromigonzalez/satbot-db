@@ -29,49 +29,27 @@ def verify_admin(email, password):
     return False
 
 def admin_operations(conn):  # Add 'conn' as a parameter to accept the database connection
-    print("1. Get users with certain criteria\n2. Add Course\n3. Add Intent\n4. Find key word in chat log\n5. Get questions from a certain user\n6. Exit")
+    print("1. Add entry to a table\n2. Query table\n3. Exit")
     choice = input("Enter your choice: ")
     if choice == '1':
-        # Get all users with certain criteria
         pass
     elif choice == '2':
-        add_course(conn) 
+        search(conn)
     elif choice == '3':
-        add_intent(conn)  
-    elif choice == '4':
-        # Find key word in chat log
-        pass
-    elif choice == '5':
-        # Get questions from a certain user
-        pass
-    elif choice == '6':
         return
     else:
         print("Invalid choice. Please try again.")
 
-def add_course(conn):
-    course_name = input("Enter course name: ")
-    year = input("Enter year: ")
-    semester = input("Enter semester: ")
-    course_code = input("Enter course code: ")
-    with conn.cursor() as cur:
-        cur.execute("INSERT INTO courses (course_name, year, semester, course_code) VALUES (%s, %s, %s, %s)",
-                    (course_name, year, semester, course_code))
-        conn.commit()
-        print("Course added successfully.")
 
-def add_intent(conn):
-    question = input("Enter question: ")
-    answer = input("Enter answer: ")
-    # Assuming the intent is not directly related to a specific course for simplicity
-    # If it is, need to fetch the course_id based on user input
-    course_id = input("Enter course ID (leave blank if not applicable): ")
-    course_id = None if course_id == "" else int(course_id)
+def search(conn):
+    conn = connect_db(db_params)
+    word = input("Enter word to search: ")
     with conn.cursor() as cur:
-        cur.execute("INSERT INTO intents (question, answer, course_id) VALUES (%s, %s, %s)",
-                    (question, answer, course_id))
-        conn.commit()
-        print("Intent added successfully.")
+        cur.execute("SELECT * FROM intents WHERE question LIKE %s", (word,))
+        result = cur.fetchall()
+        results = [list(i) for i in result]
+    print(results)
+
 
 def main():
     email = input("Enter email: ")
