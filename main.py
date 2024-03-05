@@ -34,12 +34,17 @@ def admin_operations(conn):  # Add 'conn' as a parameter to accept the database 
     if choice == '1':
         pass
     elif choice == '2':
+<<<<<<< HEAD
         search(conn)
+=======
+        pass
+>>>>>>> 0ccd1a9501dd3527adc1eb714e773bc695d61f02
     elif choice == '3':
         return
     else:
         print("Invalid choice. Please try again.")
 
+<<<<<<< HEAD
 
 def search(conn):
     conn = connect_db(db_params)
@@ -50,6 +55,8 @@ def search(conn):
         results = [list(i) for i in result]
     print(results)
 
+=======
+>>>>>>> 0ccd1a9501dd3527adc1eb714e773bc695d61f02
 
 def main():
     email = input("Enter email: ")
