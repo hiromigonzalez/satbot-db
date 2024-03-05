@@ -40,29 +40,6 @@ def admin_operations(conn):  # Add 'conn' as a parameter to accept the database 
     else:
         print("Invalid choice. Please try again.")
 
-def add_course(conn):
-    course_name = input("Enter course name: ")
-    year = input("Enter year: ")
-    semester = input("Enter semester: ")
-    course_code = input("Enter course code: ")
-    with conn.cursor() as cur:
-        cur.execute("INSERT INTO courses (course_name, year, semester, course_code) VALUES (%s, %s, %s, %s)",
-                    (course_name, year, semester, course_code))
-        conn.commit()
-        print("Course added successfully.")
-
-def add_intent(conn):
-    question = input("Enter question: ")
-    answer = input("Enter answer: ")
-    # Assuming the intent is not directly related to a specific course for simplicity
-    # If it is, need to fetch the course_id based on user input
-    course_id = input("Enter course ID (leave blank if not applicable): ")
-    course_id = None if course_id == "" else int(course_id)
-    with conn.cursor() as cur:
-        cur.execute("INSERT INTO intents (question, answer, course_id) VALUES (%s, %s, %s)",
-                    (question, answer, course_id))
-        conn.commit()
-        print("Intent added successfully.")
 
 def main():
     email = input("Enter email: ")
